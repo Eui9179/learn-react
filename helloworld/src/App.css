@@ -1,0 +1,23 @@
+.black-nav{
+  background: black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color:white;
+  padding: 20px;
+}
+
+div{
+  box-sizing:border-box
+}
+
+.list{
+  padding-left: 20px;  
+  text-align: left;
+  border-bottom:  1px solid gray;
+}
+
+.btn{
+  margin-top: 10px;
+  margin-left: 10px;
+}
