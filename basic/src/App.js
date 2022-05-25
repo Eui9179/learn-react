@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
 
+function Hello() {
+  const byFn = () => {
+    console.log('bye :(');
+  };
+  const hiFn = () => {
+    console.log('hello :)');
+    return byFn; // useEffect에 넣는 함수에 return함수를 넣어주면 컴포넌트가 파괴될 때, 호출 가능하다.
+  };
+  useEffect(hiFn, []);
+  return <h1>Hello</h1>;
+}
+
 function App() {
   const [counter, setValue] = useState(0);
   const [keyword, setKeyword] = useState('');
+  const [showAndHide, setShowAndHide] = useState(false);
 
   const onClick = () => setValue((prev) => prev + 1);
   const onChange = (event) => setKeyword(event.target.value);
+  const handlerShowAndHide = () => setShowAndHide((prev) => !prev);
 
   // state가 바뀔 때마다 다시 render되면서 component코드를 재실행한다.
   // api 호출했다고 가정 -> render될 때, 특정 함수를 제외하는 법
@@ -30,6 +44,7 @@ function App() {
   // 항상 실행되는 부분
   console.log('I run all the time');
 
+  // 두개의 state 변화 감지
   useEffect(() => {
     console.log('I run when "keyword" & "counter" changes');
   }, [keyword, counter]);
@@ -45,6 +60,12 @@ function App() {
       <button className={styles.btn} onClick={onClick}>
         Click me
       </button>
+      <div>
+        {showAndHide ? <Hello /> : null}
+        <button onClick={handlerShowAndHide}>
+          {showAndHide ? 'Hide' : 'Show'}
+        </button>
+      </div>
     </div>
   );
 }
