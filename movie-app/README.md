@@ -55,3 +55,10 @@ import { Link } from 'react-router-dom';<br>
       */
     }
 
+# useEffect
+
+특정 state가 변경될때만 렌더링
+
+    useEffect(()=>{
+      """function"""
+    }, ["""state"""])
