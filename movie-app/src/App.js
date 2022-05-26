@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './page/Home';
+import Detail from './page/Detail';
+
+//react-route-dom: page를 url에 매칭시켜줌
+// <Router><Routes><Route pate={url} element={page}/></Router></Routes>
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    fetch(
-      `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
-    )
-      .then((response) => response.json)
-      .then((json) => setMovies(json.data.movies));
-  }, []);
-
-  return <div className='App'>{loading ? <h1>loading</h1> : null}</div>;
+  return (
+    <Router>
+      <Routes>
+        <Route path='/movie/:id' element={<Detail />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
