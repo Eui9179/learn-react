@@ -15,14 +15,6 @@
       */
     }
 
-# useEffect
-
-특정 state가 변경될때만 렌더링
-
-    useEffect(()=>{
-      """function"""
-    }, ["""state"""])
-
 # Route
 ## react-router-dom@5.3.0
 <br>
@@ -65,3 +57,13 @@ import { Link } from 'react-router-dom';<br>
 
 <br>
 
+# Effect (or a "Side Effect")
+
+Side Effect는 애플리케이션에서 화면에 표시하는 것 이외에 일어나는 모든 것
+예를 들어 http request를 보내는 것, 브라우저에 무언가를 저장하는 것 등등
+
+useEffect: 특정 state가 변경될때만 렌더링
+
+    useEffect(()=>{...}, [dependencies])
+    
+    
