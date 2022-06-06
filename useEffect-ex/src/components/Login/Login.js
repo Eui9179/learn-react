@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -11,12 +11,17 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  useEffect(()=>{
+    // 의존성이 변경될 때마다 이 useEffect 함수를 다시 실행해라
+    // 이 셋중에 변경된게 없다면 실행되지 않는다.
+    // 일반적으로 특정 데이터, 예를 들어 state, props등이
+    setFormIsValid(
+      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+  ) ;
+  },[enteredEmail, enteredPassword]);
+
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-
-    setFormIsValid(
-      event.target.value.includes('@') && enteredPassword.trim().length > 6
-    );
   };
 
   const passwordChangeHandler = (event) => {
