@@ -15,13 +15,16 @@ const Login = (props) => {
     // 의존성이 변경될 때마다 이 useEffect 함수를 다시 실행해라
     // 이 셋중에 변경된게 없다면 실행되지 않는다.
     // 일반적으로 특정 데이터, 예를 들어 state, props등이
-    setTimeout(()=>{
+    const identifier = setTimeout(()=>{
       setFormIsValid(
         enteredEmail.includes('@') && enteredPassword.trim().length > 6
       );
     },500);
 
-    return ()=>{}; // clean up function(처음을 제외한 시작할 때 실행되는 함수)
+    // clean up function(처음을 제외한 시작할 때 실행되는 함수)
+    return ()=>{
+      clearTimeout(identifier);
+    }; 
   }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
