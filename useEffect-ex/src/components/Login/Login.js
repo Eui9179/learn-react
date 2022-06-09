@@ -22,6 +22,7 @@ const Login = (props) => {
     },500);
 
     // clean up function(처음을 제외한 시작할 때 실행되는 함수)
+    // 다시 강의 시청
     return ()=>{
       clearTimeout(identifier);
     }; 
