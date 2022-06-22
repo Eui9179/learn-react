@@ -66,4 +66,9 @@ useEffect: 특정 state가 변경될때만 렌더링
 
     useEffect(()=>{...}, [dependencies])
     
-    
+
+# Context
+State Storage
+
+로그인의 경우 사용자 로그인 정보는 모든 컴포넌트에서 쓰일텐데 
+그때마다 props(props chain)로 전달할 수 없다. 
